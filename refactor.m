@@ -63,7 +63,7 @@ data_x = table2array(table_x)';
 data_y = table2array(table_y)';
 data_x_n = mapminmax('apply', data_x, psx);
 data_y_n = mapminmax('apply', data_y, psy);
-net = trainNetwork(data_x_n, data_y_n, layers, options);
+net = trainNetwork(data_x_n, data_y_n, net.layers, options);
 clear table_x table_y data_x data_x_n data_y data_y_n
 
 %% 验证数据
