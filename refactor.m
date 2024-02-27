@@ -16,7 +16,7 @@ tic
 clear net
 InputSize = 5;
 % numHiddenUnits = 40;
-FC1 = 40;
+FC1 = 30;
 FC2 = 20;
 FC3 = 10;
 FC4 = 5;
