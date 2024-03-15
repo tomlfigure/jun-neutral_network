@@ -10,13 +10,16 @@ data_x = table2array(table_x)';
 [data_x_n, psx] = mapminmax(data_x, 0, 1);
 data_y = table2array(table_y)';
 [data_y_n, psy] = mapminmax(data_y, 0, 1);
-
 save('data\\keyData.mat', 'psx', 'psy');
 
 %% 模型训练
 tic
 clear net
 InputSize = 5;
+InputSize = 5;
+InputSize = 5;
+numHiddenUnits = 40;
+In
 % numHiddenUnits = 40;
 FC1 = 30;
 FC2 = 20;
