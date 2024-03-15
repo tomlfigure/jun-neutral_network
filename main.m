@@ -11,44 +11,10 @@ clear all
 save('data\\keyData.mat', 'psx', 'psdp', 'psbpt',"pste", 'psce');
 fclear();
 
-%% prepare the train data
-[data_x_n, dp_data_n, bpt_data_n, te_data_n, ce_data_n] = loadDataN(1, 300);
-
 %% 模型训练
-tic
-clear net
-InputSize = 5;
-FC1 = 30;
-FC2 = 20;
-FC3 = 10;
-FC4 = 5;
-MaxEpochs=100;
-InitialLearnRate=0.0025;
-OutputSize = 1;
-layers = [ ...
-    sequenceInputLayer(InputSize,'Name','input1')  %输入层
-    lstmLayer(120,'Name','lstm1')  %LSTM神经网络 
-    lstmLayer(60,'Name','lstm2')  %LSTM神经网络
-    fullyConnectedLayer(FC1,'Name','fc1')
-    fullyConnectedLayer(FC2,'Name','fc2')%全连接层
-    fullyConnectedLayer(FC3,'Name','fc3')
-    fullyConnectedLayer(FC4,'Name','fc4')
-    fullyConnectedLayer(OutputSize,'Name','fc5')  %输出层
-    regressionLayer('Name','re_1')];
 
-options = trainingOptions('adam', ...
-    'ExecutionEnvironment','cpu', ...
-    'MaxEpochs',MaxEpochs, ...
-    'MiniBatchSize',1,...
-    'Shuffle','never',...
-    'GradientThreshold',1, ...
-    'InitialLearnRate',InitialLearnRate,...
-    'LearnRateSchedule','piecewise',...
-    'LearnRateDropPeriod',50,...
-    'LearnRateDropFactor',0.9,...
-    'L2Regularization',0.0002,...
-    'Verbose',false,...
-    'Plots','training-progress');
+[data_x_n, dp_data_n, bpt_data_n, te_data_n, ce_data_n] = loadDataN(1, 300);
+[layers, options] = networkArgus();
 rng('default')  %固定随机化，便于调参
 net_dp = trainNetwork(data_x_n, dp_data_n, layers, options);
 net_bpt = trainNetwork(data_x_n, bpt_data_n, layers, options);
@@ -57,9 +23,7 @@ net_ce = trainNetwork(data_x_n, ce_data_n, layers, options);
 
 %保存网络，清理训练数据
 save('net.mat', "net_dp", "net_bpt", "net_te", "net_ce");
-clear InputSize FC1 FC2 numHiddenUnits MaxEpochs InitialLearnRate OutputSize
 fclear();
-toc
 
 
 %% 继续训练
@@ -82,7 +46,7 @@ fclear();
 %% 导入神经网络
 load('net.mat');
 
-%% 验证数据
+%% 预测数据
 start_col = 351;
 end_col = 370;
 [data_x_v dp_data_v bpt_data_v te_data_v ce_data_v] = loadData(start_col, end_col);
@@ -106,7 +70,7 @@ ce_data_p = mapminmax('reverse', ce_data_p_n, psce);
 save("result_display.mat", "dp_data_p", "bpt_data_p", "te_data_p", "ce_data_p", "dp_data_v", "bpt_data_v", "te_data_v", "ce_data_v");
 fclear();
 
-%% 展示误差
+%% 误差分析
 
 % actual -> dp_data_v
 % predict -> dp_data_p
