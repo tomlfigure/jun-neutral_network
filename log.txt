@@ -1,3 +1,12 @@
 
 
 
+version 1:
+initialize the networks by data from 1 to 50 cols
+2024-03-16 11:10:03
+
+
+version 2:
+continue training the network by data from 51 to 100 cols
+2024-03-16 11:13:06
+

@@ -18,10 +18,10 @@ load('data\\keyData.mat');
 rng('default')  %固定随机化，便于调参
 %% create the networks
 start_col = 1;
-end_col = 400;
+end_col = 50;
 
 version_id = 0;
-save('data\\keyData.mat', 'version_id');
+save('data\\keyData.mat', 'psx', 'psdp', 'psbpt',"pste", 'psce','version_id');
 
 [data_x_n, dp_data_n, bpt_data_n, te_data_n, ce_data_n] = loadDataN(start_col, end_col);
 net_dp = trainNetwork(data_x_n, dp_data_n, layers, options);
@@ -39,8 +39,8 @@ fclear();
 
 %% 继续训练
 load("data\\keyData.mat");
-start_col = 301;
-end_col = 500;
+start_col = 51;
+end_col = 100;
 
 %加载训练数据
 [data_x_n, dp_data_n, bpt_data_n, te_data_n, ce_data_n] = loadDataN(start_col, end_col);
@@ -101,19 +101,20 @@ load('data\\result_display.mat');
 [te_mep, te_aep] = maxErrorPercent(te_data_p, te_data_v);
 [ce_mep, ce_aep] = maxErrorPercent(ce_data_p, ce_data_v);
 
-disp("maxErrorPercent:");
-disp(' ');
-disp("drop pressure:");
-disp([dp_mep, dp_aep]);
-disp("baseplate temperature:");
-disp([bpt_mep, bpt_aep]);
-disp(" ");
-disp("temperature even:");
-disp([te_mep, te_aep]);
-disp(" ");
-disp("coefficent : ");
-disp([ce_mep, ce_aep]);
-clear dp_data_v bpt_data_v 
+
+data = {};
+data.dp_mep = dp_mep;
+data.dp_aep = dp_aep;
+data.bpt_mep = bpt_mep;
+data.bpt_aep = bpt_aep;
+data.te_mep = te_mep;
+data.te_aep = te_aep;
+data.ce_mep = ce_mep;
+data.ce_aep = ce_aep;
+
+errorLog(data);
+clear data
+fclear();
 %% 保存最终的预测数据和网络
 save('result\\net.mat', "net_dp", "net_bpt", "net_te", "net_ce");
 
