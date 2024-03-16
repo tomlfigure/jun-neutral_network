@@ -18,7 +18,7 @@ load('data\\keyData.mat');
 rng('default')  %固定随机化，便于调参
 %% create the networks
 start_col = 1;
-end_col = 50;
+end_col = 500;
 
 version_id = 0;
 save('data\\keyData.mat', 'psx', 'psdp', 'psbpt',"pste", 'psce','version_id');
@@ -39,8 +39,8 @@ fclear();
 
 %% 继续训练
 load("data\\keyData.mat");
-start_col = 51;
-end_col = 100;
+start_col = 801;
+end_col = 1000;
 
 %加载训练数据
 [data_x_n, dp_data_n, bpt_data_n, te_data_n, ce_data_n] = loadDataN(start_col, end_col);
@@ -53,7 +53,7 @@ net_ce = trainNetwork(data_x_n, ce_data_n, net_ce.Layers, options);
 
 %log
 logMessage = sprintf("continue training the network from %d to %d cols", start_col, end_col);
-trainLog(logMessage);
+trainLog(logMessage, options);
 
 %保存网络，清理训练数据
 save('data\\net.mat', "net_dp", "net_bpt", "net_te", "net_ce");
@@ -63,8 +63,8 @@ fclear();
 load('data\\net.mat');
 
 %% 预测数据
-start_col = 331;
-end_col = 450;
+start_col = 1000;
+end_col = 1046;
 [data_x_v dp_data_v bpt_data_v te_data_v ce_data_v] = loadData(start_col, end_col);
 
 % normalize
@@ -83,7 +83,9 @@ te_data_p = mapminmax('reverse', te_data_p_n, pste);
 ce_data_p = mapminmax('reverse', ce_data_p_n, psce);
 
 % save the result data
-save("data\\result_display.mat", "dp_data_p", "bpt_data_p", "te_data_p", "ce_data_p", "dp_data_v", "bpt_data_v", "te_data_v", "ce_data_v");
+save("data\\result_display.mat", "dp_data_p", "bpt_data_p", "te_data_p",...
+    "ce_data_p", "dp_data_v", "bpt_data_v", "te_data_v", "ce_data_v", "start_col",...
+    "end_col");
 fclear();
 
 %% 误差分析
@@ -96,12 +98,11 @@ load('data\\result_display.mat');
 
 %% max error percentage
 
+%calculate errors
 [dp_mep, dp_aep] = maxErrorPercent(dp_data_p, dp_data_v);
 [bpt_mep, bpt_aep] = maxErrorPercent(bpt_data_p, bpt_data_v);
 [te_mep, te_aep] = maxErrorPercent(te_data_p, te_data_v);
 [ce_mep, ce_aep] = maxErrorPercent(ce_data_p, ce_data_v);
-
-
 data = {};
 data.dp_mep = dp_mep;
 data.dp_aep = dp_aep;
@@ -112,9 +113,12 @@ data.te_aep = te_aep;
 data.ce_mep = ce_mep;
 data.ce_aep = ce_aep;
 
-errorLog(data);
+%log errors
+errorLog(data, start_col, end_col);
 clear data
 fclear();
+
+
 %% 保存最终的预测数据和网络
 save('result\\net.mat', "net_dp", "net_bpt", "net_te", "net_ce");
 
