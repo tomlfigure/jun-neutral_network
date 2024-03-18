@@ -5,7 +5,7 @@ function y = errorLog(data, start_col, end_col)
     filename = 'errorLog.txt';
     fileID = fopen(filename, 'a');  % 打开文件以进行写入（如果文件不存在则创建）
     fprintf(fileID, 'the errors based on version %d:\n', version_id);
-    fprintf(fileID, 'the cols from %d to %d have been used for prediction', start_col, end_col);
+    fprintf(fileID, 'the cols from %d to %d have been used for prediction\n', start_col, end_col);
     fprintf(fileID, 'maxErrorPercent:\n\n');
     fprintf(fileID, 'drop pressure:\n');
     fprintf(fileID, '%f, %f\n\n', data.dp_mep, data.dp_aep);
