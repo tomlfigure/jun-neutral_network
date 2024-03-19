@@ -155,3 +155,27 @@ initialize the networks by data from 1 to 400 cols
 
 
 
+version 1:
+LearnRateDropPeriod : 80
+MaxEpochs : 580
+InitialLearnRate : 1.800000e-02
+L2Regularization : 2.000000e-04
+LearnRateDropFactor : 9.400000e-01
+
+initialize the networks by data from 1 to 400 cols
+2024-03-19 19:51:26
+
+
+
+version 1:
+LearnRateDropPeriod : 80
+MaxEpochs : 650
+InitialLearnRate : 2.400000e-02
+L2Regularization : 2.000000e-04
+LearnRateDropFactor : 9.400000e-01
+
+initialize the networks by data from 1 to 400 cols
+2024-03-19 19:55:26
+
+
+

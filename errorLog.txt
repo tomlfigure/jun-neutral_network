@@ -1,11 +1,12 @@
-the errors based on version 2:
+
+the errors based on version 1:
 the cols from 600 to 700 have been used for prediction
 maxErrorPercent:
 
-drop pressure:
-47.542160, 10.995394
+temperature even:
+116.370537, 3.943662
 
-2024-03-19 19:10:19
+2024-03-19 19:52:03
 
 
 
@@ -14,118 +15,10 @@ the errors based on version 1:
 the cols from 600 to 700 have been used for prediction
 maxErrorPercent:
 
-drop pressure:
-11.350709, 3.306555
+temperature even:
+20.209963, 4.920636
 
-2024-03-19 19:15:03
-
-
-
-
-the errors based on version 2:
-the cols from 700 to 800 have been used for prediction
-maxErrorPercent:
-
-drop pressure:
-20.354551, 3.753717
-
-2024-03-19 19:16:25
-
-
-
-
-the errors based on version 1:
-the cols from 700 to 800 have been used for prediction
-maxErrorPercent:
-
-drop pressure:
-100.419106, 11.498286
-
-2024-03-19 19:18:43
-
-
-
-attention
-the errors based on version 1:
-the cols from 700 to 800 have been used for prediction
-maxErrorPercent:
-
-drop pressure:
-9.208821, 2.985564
-
-2024-03-19 19:21:07
-
-
-
-
-the errors based on version 1:
-the cols from 600 to 700 have been used for prediction
-maxErrorPercent:
-
-drop pressure:
-14.764354, 2.710599
-
-2024-03-19 19:21:55
-
-
-
-
-the errors based on version 2:
-the cols from 600 to 700 have been used for prediction
-maxErrorPercent:
-
-drop pressure:
-17.212189, 3.372151
-
-2024-03-19 19:23:57
-
-
-
-
-the errors based on version 1:
-the cols from 600 to 700 have been used for prediction
-maxErrorPercent:
-
-drop pressure:
-23.360792, 3.020519
-
-2024-03-19 19:27:39
-
-
-
-
-the errors based on version 1:
-the cols from 600 to 700 have been used for prediction
-maxErrorPercent:
-
-drop pressure:
-18.351614, 5.057920
-
-2024-03-19 19:33:12
-
-
-
-
-the errors based on version 1:
-the cols from 600 to 700 have been used for prediction
-maxErrorPercent:
-
-drop pressure:
-14.557036, 4.786956
-
-2024-03-19 19:35:43
-
-
-
-
-the errors based on version 1:
-the cols from 600 to 700 have been used for prediction
-maxErrorPercent:
-
-drop pressure:
-12.092357, 4.005547
-
-2024-03-19 19:39:43
+2024-03-19 19:55:59
 
 
 

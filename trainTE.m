@@ -8,7 +8,7 @@
 [bpt_data_n, psbpt] = mapminmax(bpt_data, 0, 1);
 [te_data_n, pste] = mapminmax(te_data, 0, 1);
 [ce_data_n, psce] = mapminmax(ce_data, 0, 1);
-save('data\\keyData.mat', 'psx', 'psdp', 'psbpt',"pste", 'psce','version_id');
+save('data\\keyData.mat', 'psx', 'pste', 'psbpt',"pste", 'psce','version_id');
 fclear();
 
 % 模型训练
@@ -21,10 +21,10 @@ end_col = 400;
 version_id = 0;
 save('data\\keyData.mat', 'psx', 'psdp', 'psbpt',"pste", 'psce','version_id');
 [data_x_n, dp_data_n, bpt_data_n, te_data_n, ce_data_n] = loadDataN(start_col, end_col);
-net_dp = trainNetwork(data_x_n, dp_data_n, layers, options);
+net_te = trainNetwork(data_x_n, te_data_n, layers, options);
 logMessage = sprintf("initialize the networks by data from %d to %d cols", start_col, end_col);
 trainLog(logMessage, options);
-save('data\\net.mat', "net_dp");
+save('data\\net.mat', "net_te");
 fclear();
 
 %% 继续训练
@@ -33,8 +33,8 @@ start_col = 401;
 end_col = start_col + 99;
 [data_x_n, dp_data_n, bpt_data_n, te_data_n, ce_data_n] = loadDataN(start_col, end_col);
 [layers, options] = networkArgus();
-net_dp = trainNetwork(data_x_n, dp_data_n, net_dp.Layers, options);
-save('data\\net.mat', 'net_dp');
+net_te = trainNetwork(data_x_n, te_data_n, net_te.Layers, options);
+save('data\\net.mat', 'net_te');
 logMessage = sprintf("continue training the network from %d to %d cols", start_col, end_col);
 trainLog(logMessage, options);
 fclear();
@@ -48,17 +48,17 @@ end_col_v = 700;
 data_x_v_n = mapminmax('apply', data_x_v, psx);
 
 % predict
-dp_data_p_n = predict(net_dp, data_x_v_n);
+te_data_p_n = predict(net_te, data_x_v_n);
 % reverse data
-dp_data_p = mapminmax('reverse', dp_data_p_n, psdp);
+te_data_p = mapminmax('reverse', te_data_p_n, pste);
 
 % save the result data
-save("data\\result_display.mat", "dp_data_p","dp_data_v","start_col_v","end_col_v",'version_id');
+save("data\\result_display.mat", "te_data_p","te_data_v","start_col_v","end_col_v",'version_id');
 
 % 误差分析
 
-% actual -> dp_data_v
-% predict -> dp_data_p
+% actual -> te_data_v
+% predict -> te_data_p
 
 % 导入预测结果
 load('data\\result_display.mat');
@@ -66,10 +66,10 @@ load('data\\result_display.mat');
 % max error percentage
 
 %calculate errors
-[dp_mep, dp_aep] = maxErrorPercent(dp_data_p, dp_data_v);
+[te_mep, te_aep] = maxErrorPercent(te_data_p, te_data_v);
 data = {};
-data.dp_mep = dp_mep;
-data.dp_aep = dp_aep;
+data.te_mep = te_mep;
+data.te_aep = te_aep;
 
 %log errors
 errorLog(data, start_col_v, end_col_v);
