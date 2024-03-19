@@ -18,7 +18,7 @@ load('data\\keyData.mat');
 rng('default')  %固定随机化，便于调参
 % create the networks
 start_col = 1;
-end_col = 500;
+end_col = 300;
 
 version_id = 0;
 save('data\\keyData.mat', 'psx', 'psdp', 'psbpt',"pste", 'psce','version_id');
@@ -39,7 +39,7 @@ fclear();
 
 %%
 % 继续训练
-for start_col=501:100:901
+for start_col
    
     end_col = start_col + 99;
     %加载训练数据
@@ -62,7 +62,8 @@ for start_col=501:100:901
     % 导入神经网络
     load('data\\net.mat');
     
-    % 预测数据
+    %%预测数据
+    end_col = 330;
     start_col_v = end_col + 1;
     end_col_v = start_col_v + 30;
     [data_x_v dp_data_v bpt_data_v te_data_v ce_data_v] = loadData(start_col_v, end_col_v);
@@ -125,7 +126,7 @@ save('result\\net.mat', "net_dp", "net_bpt", "net_te", "net_ce");
 load('data\\keyData.mat');
 load('result\\net.mat');
 start_col_v = 1031;
-end_col_v = 1040;
+end_col_v = 1046;
 [data_x_v dp_data_v bpt_data_v te_data_v ce_data_v] = loadData(start_col_v, end_col_v);
 % normalize
 data_x_v_n = mapminmax('apply', data_x_v, psx);
@@ -138,12 +139,20 @@ ce_data_p_n = predict(net_ce, data_x_v_n);
 
 % reverse data
 dp_data_p = mapminmax('reverse', dp_data_p_n, psdp);
-bpt_data_p = mapminmax('reverse', bpt_data_p_n, psbpt);
 te_data_p = mapminmax('reverse', te_data_p_n, pste);
-ce_data_p = mapminmax('reverse', ce_data_p_n, psce);
 
 clear data_x_v_n dp_data_p_n bpt_data_p_n te_data_p_n ce_data_p_n
 
+%%
+
+dp_r = calR(dp_data_v, dp_data_p);
+te_r = calR(te_data_v, te_data_p);
+ce_r = calR(ce_data_v, ce_data_p);
+bpt_r = calR(bpt_data_v, bpt_data_p);
+disp(dp_r);
+disp(te_r);
+disp(ce_r);
+disp(bpt_r);
 
 
 

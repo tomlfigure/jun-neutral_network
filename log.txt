@@ -1,0 +1,157 @@
+
+version 1:
+LearnRateDropPeriod : 80
+MaxEpochs : 50
+InitialLearnRate : 1.000000e-02
+L2Regularization : 2.000000e-04
+LearnRateDropFactor : 9.500000e-01
+
+initialize the networks by data from 1 to 400 cols
+2024-03-19 19:09:39
+
+
+
+version 2:
+LearnRateDropPeriod : 80
+MaxEpochs : 50
+InitialLearnRate : 1.000000e-02
+L2Regularization : 2.000000e-04
+LearnRateDropFactor : 9.500000e-01
+
+continue training the network from 401 to 500 cols
+2024-03-19 19:09:57
+
+
+
+version 1:
+LearnRateDropPeriod : 80
+MaxEpochs : 600
+InitialLearnRate : 2.000000e-02
+L2Regularization : 2.000000e-04
+LearnRateDropFactor : 9.500000e-01
+
+initialize the networks by data from 1 to 400 cols
+2024-03-19 19:14:54
+
+
+
+version 2:
+LearnRateDropPeriod : 80
+MaxEpochs : 600
+InitialLearnRate : 2.000000e-02
+L2Regularization : 2.000000e-04
+LearnRateDropFactor : 9.500000e-01
+
+continue training the network from 401 to 500 cols
+2024-03-19 19:15:56
+
+
+
+version 1:
+LearnRateDropPeriod : 80
+MaxEpochs : 600
+InitialLearnRate : 3.000000e-02
+L2Regularization : 3.000000e-04
+LearnRateDropFactor : 9.600000e-01
+
+initialize the networks by data from 1 to 400 cols
+2024-03-19 19:18:31
+
+
+attention
+version 1:
+LearnRateDropPeriod : 80
+MaxEpochs : 600
+InitialLearnRate : 2.000000e-02
+L2Regularization : 2.000000e-04
+LearnRateDropFactor : 9.400000e-01
+
+initialize the networks by data from 1 to 400 cols
+2024-03-19 19:20:38
+
+
+
+version 2:
+LearnRateDropPeriod : 80
+MaxEpochs : 600
+InitialLearnRate : 2.000000e-02
+L2Regularization : 2.000000e-04
+LearnRateDropFactor : 9.400000e-01
+
+continue training the network from 401 to 500 cols
+2024-03-19 19:23:51
+
+
+
+version 1:
+LearnRateDropPeriod : 80
+MaxEpochs : 850
+InitialLearnRate : 3.000000e-02
+L2Regularization : 2.000000e-04
+LearnRateDropFactor : 9.200000e-01
+
+initialize the networks by data from 1 to 400 cols
+2024-03-19 19:26:48
+
+
+
+version 1:
+LearnRateDropPeriod : 80
+MaxEpochs : 650
+InitialLearnRate : 2.300000e-02
+L2Regularization : 2.000000e-04
+LearnRateDropFactor : 9.400000e-01
+
+initialize the networks by data from 1 to 400 cols
+2024-03-19 19:30:19
+
+
+
+version 1:
+LearnRateDropPeriod : 80
+MaxEpochs : 620
+InitialLearnRate : 2.200000e-02
+L2Regularization : 2.000000e-04
+LearnRateDropFactor : 9.400000e-01
+
+initialize the networks by data from 1 to 400 cols
+2024-03-19 19:35:38
+
+
+
+version 1:
+LearnRateDropPeriod : 80
+MaxEpochs : 600
+InitialLearnRate : 1.900000e-02
+L2Regularization : 2.000000e-04
+LearnRateDropFactor : 9.400000e-01
+
+initialize the networks by data from 1 to 400 cols
+2024-03-19 19:37:42
+
+
+
+version 1:
+LearnRateDropPeriod : 80
+MaxEpochs : 600
+InitialLearnRate : 1.900000e-02
+L2Regularization : 2.000000e-04
+LearnRateDropFactor : 9.400000e-01
+
+initialize the networks by data from 1 to 400 cols
+2024-03-19 19:39:55
+
+
+
+version 1:
+LearnRateDropPeriod : 80
+MaxEpochs : 580
+InitialLearnRate : 1.800000e-02
+L2Regularization : 2.000000e-04
+LearnRateDropFactor : 9.400000e-01
+
+initialize the networks by data from 1 to 400 cols
+2024-03-19 19:42:02
+
+
+
